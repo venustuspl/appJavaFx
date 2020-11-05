@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import java.time.LocalDateTime;
+
 public class HelloFX extends Application {
 
     @Override
@@ -14,7 +16,7 @@ public class HelloFX extends Application {
 
         String javaVersion = System.getProperty("java.version");
         String javafxVersion = System.getProperty("javafx.version");
-        Label l = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
+        Label l = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ". LocalDateTime" + LocalDateTime.now());
         Scene scene = new Scene(new StackPane(l), 640, 480);
         stage.setScene(scene);
         stage.show();
