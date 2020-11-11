@@ -1,6 +1,7 @@
 package pl.venustus;
 
 import javafx.application.Application;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
@@ -54,11 +55,17 @@ public class HelloFX extends Application {
         // when button is pressed
         b.setOnAction(event);
 
+        Label label3 = new Label("Loop value:");
+        TextField textField = new TextField ();
+
+
         // add button
         r.getChildren().add(b);
         r.getChildren().add(l);
         r.getChildren().add(l1);
         r.getChildren().add(l2);
+        r.getChildren().add(label3);
+
 
         // create a scene
         Scene sc = new Scene(r, 200, 200);
@@ -67,6 +74,8 @@ public class HelloFX extends Application {
         s.setScene(sc);
 
         s.show();
+        s.getScene().getWindow().setWidth(s.getScene().getWidth() + 0.001);
+
     }
 
 
