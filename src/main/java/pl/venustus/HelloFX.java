@@ -9,6 +9,8 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+import java.awt.*;
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 public class HelloFX extends Application {
@@ -17,6 +19,8 @@ public class HelloFX extends Application {
     // launch the application
     public void start(Stage s)
     {
+        MrRobot bot = new MrRobot();
+
         // set title for the stage
         s.setTitle("creating buttons");
 
@@ -29,12 +33,20 @@ public class HelloFX extends Application {
         // create a label
         Label l = new Label("button not selected");
         Label l1 = new Label(String.valueOf(LocalDateTime.now()));
+        Label l2 = new Label();
 
         // action event
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 l.setText("   button   selected    ");
+                try {
+                    bot.mouseMoveWithLabel(l2);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (AWTException e) {
+                    e.printStackTrace();
+                }
             }
 
         };
@@ -46,6 +58,7 @@ public class HelloFX extends Application {
         r.getChildren().add(b);
         r.getChildren().add(l);
         r.getChildren().add(l1);
+        r.getChildren().add(l2);
 
         // create a scene
         Scene sc = new Scene(r, 200, 200);
