@@ -16,8 +16,6 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 
 public class HelloFX extends Application {
-
-
     // launch the application
     public void start(Stage s) {
         MrRobot bot = new MrRobot();
@@ -57,7 +55,6 @@ public class HelloFX extends Application {
                     e.printStackTrace();
                 }
             }
-
         };
 
         // when button is pressed
@@ -81,7 +78,7 @@ public class HelloFX extends Application {
         s.show();
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         // launch the application
         launch(args);
     }

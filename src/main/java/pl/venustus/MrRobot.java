@@ -69,5 +69,4 @@ public class MrRobot {
         }
         label.setText("End loop.");
     }
-
 }
