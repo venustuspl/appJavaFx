@@ -1,13 +1,14 @@
 package pl.venustus;
 
 import javafx.application.Application;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -18,8 +19,7 @@ public class HelloFX extends Application {
 
 
     // launch the application
-    public void start(Stage s)
-    {
+    public void start(Stage s) {
         MrRobot bot = new MrRobot();
 
         // set title for the stage
@@ -34,15 +34,23 @@ public class HelloFX extends Application {
         // create a label
         Label l = new Label("button not selected");
         Label l1 = new Label(String.valueOf(LocalDateTime.now()));
-        Label l2 = new Label();
-
+        Label l2 = new Label("Loop value: ");
+        TextField textField = new TextField();
         // action event
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                Integer loopValue;
                 l.setText("   button   selected    ");
                 try {
-                    bot.mouseMoveWithLabel(l2);
+                    System.out.println(" get text: " + textField.getText());
+                    if (textField.getText() == null) {
+                        loopValue = 1;
+                        textField.setText("1");
+                    } else {
+                        loopValue = Integer.valueOf(textField.getText());
+                    }
+                    bot.mouseMoveWithLabel(l2, loopValue);
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (AWTException e) {
@@ -55,18 +63,15 @@ public class HelloFX extends Application {
         // when button is pressed
         b.setOnAction(event);
 
-        Label label3 = new Label("Loop value:");
-        TextField textField = new TextField ();
-
-
         // add button
         r.getChildren().add(b);
         r.getChildren().add(l);
         r.getChildren().add(l1);
         r.getChildren().add(l2);
-        r.getChildren().add(label3);
 
 
+        HBox hbox = new HBox(textField);
+        r.getChildren().add(hbox);
         // create a scene
         Scene sc = new Scene(r, 200, 200);
 
@@ -74,13 +79,9 @@ public class HelloFX extends Application {
         s.setScene(sc);
 
         s.show();
-        s.getScene().getWindow().setWidth(s.getScene().getWidth() + 0.001);
-
     }
 
-
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         // launch the application
         launch(args);
     }
