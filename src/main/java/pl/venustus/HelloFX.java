@@ -43,7 +43,7 @@ public class HelloFX extends Application {
                 Integer loopValue;
                 l.setText("   button   selected    ");
                 try {
-                    System.out.println(" get text: " + textField.getText());
+                    System.out.println(" get text:" + textField.getText() + "end.");
                     if (textField.getText() == null) {
                         loopValue = 1;
                         textField.setText("1");

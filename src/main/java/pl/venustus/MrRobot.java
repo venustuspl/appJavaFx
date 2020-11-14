@@ -56,16 +56,18 @@ public class MrRobot {
         Random r = new Random();
         for (int i = loop; i > 0; i--) {
             robot.mouseMove(r.nextInt(1200), r.nextInt(800));
+            robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
             robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
-//            robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
-            robot.setAutoDelay(2000);
+
+            robot.setAutoDelay(10000);
+
             System.out.println(i + " " + LocalDateTime.now());
             label.setText(String.valueOf(LocalDateTime.now()));
-            System.out.println(label.getText());
 
             LOGGER.log(Level.FINE, "processing {0} entries in loop", i);
             LOGGER.log(Level.INFO, " " + i);
         }
+        label.setText("End loop.");
     }
 
 }
