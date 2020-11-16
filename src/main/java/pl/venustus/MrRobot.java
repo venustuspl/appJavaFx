@@ -67,6 +67,6 @@ public class MrRobot {
             LOGGER.log(Level.FINE, "processing {0} entries in loop", i);
             LOGGER.log(Level.INFO, " " + i);
         }
-        label.setText("End loop.");
+        label.setText("End loop." + LocalDateTime.now());
     }
 }
